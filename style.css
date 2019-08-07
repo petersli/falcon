@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: 'Roboto Mono', monospace;
+    background-color: black;
 }
 
 canvas {
@@ -19,7 +20,34 @@ canvas {
 }
 
 .yellow-bar {
-    border-top: 5px solid gold;
+    border-top: 8px solid gold;
     padding: 0px;
     margin: 0px;
 }
+
+.video-container {
+    max-width: 560px;
+    max-height: 315px;
+    position: relative;
+    padding-bottom: 560px;
+    padding-top: 30px; height: 0; overflow: hidden;
+    }
+    
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 560px;
+    max-height: 315px;
+    width: 100%;
+    height: 100%;
+    }
+
+    pre code {
+        background-color: #eee;
+        border: 1px solid #999;
+        display: block;
+        padding: 20px;
+      }
