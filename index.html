@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto+Mono&display=swap"
         rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
     <script src="js/particle.min.js"></script>
     <script src="js/typed.min.js"></script>
 </head>
@@ -32,7 +35,7 @@
                     culpa qui officia deserunt mollit anim id est laborum.
                 </p>
                 <div class="mt-3">
-                    <button class="btn btn-warning">Launch <i class="fas fa-arrow-right"></i></i></button>
+                    <button class="btn btn-warning">Launch Web App <i class="fas fa-arrow-right"></i></i></button>
                     <button class="btn btn-dark">More Info</button>
                 </div>
             </div>
@@ -49,12 +52,20 @@
                     frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
             </div>
         </div>
+        <div>
+            <h5 class="pt-4 mb-3" style="color: white;">Python (Local Deploy)</h5>
+            <code style="background-color: #2d3436; border-radius: 5px; padding: 5px;">$ pip install pytorch-falcon</code>
+            <br><br>
+            <code class="mt-3" style="background-color: #2d3436; border-radius: 5px; padding: 5px;">>> falcon.deploy(model, opts={"input": "png", "output": "png"}, key="your_key_here")</code>
+        </div>
 
         <div>
             <h5 class="pt-4 mb-3" style="color: white;">Demo</h5>
-            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/D8_15ydSNN0?controls=0"
-                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+            <div style="max-width:560px;">
+            <div class="videoWrapper">
+                <iframe width="560" height="349" src="https://www.youtube.com/embed/bIrEM2FbOLU?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
         </div>
         <footer class="footer mt-3">
             <p class="text-muted">
