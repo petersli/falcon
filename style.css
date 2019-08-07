@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+canvas {
+    display: block;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    z-index: -3;
+}
+
+.yellow-bar {
+    border-top: 5px solid gold;
+    padding: 0px;
+    margin: 0px;
+}
