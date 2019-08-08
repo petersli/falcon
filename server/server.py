@@ -66,19 +66,20 @@ def falcon_create_html():
 
 @app.route("/api/v1/falcon_incoming_request", methods=["POST"])
 def falcon_incoming_request():
-    data = request.json
-    if data["input_type"] == "image":
-        file = request.files['file']
-        filename = secure_filename(file.filename)
-        file.save(filename))
-    if data["input_type"] == "audio":
-        file = request.files['file']
-        filename = secure_filename(file.filename)
-        file.save(filename))
-    if data["input_type"] == "numbers":
-        numbers = data["data"]
-    if data["input_type"] == "text":
-        text = data["input_Text"]
+    # data = request.json
+    # if data["input_type"] == "image":
+    #     file = request.files['file']
+    #     filename = secure_filename(file.filename)
+    #     file.save(filename))
+    # if data["input_type"] == "audio":
+    #     file = request.files['file']
+    #     filename = secure_filename(file.filename)
+    #     file.save(filename))
+    # if data["input_type"] == "numbers":
+    #     numbers = data["data"]
+    # if data["input_type"] == "text":
+    #     text = data["input_Text"]
+    return 'nice one'
 
 @app.route("/tejpal")
 def tejpal():
