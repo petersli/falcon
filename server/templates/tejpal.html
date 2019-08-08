@@ -1,0 +1,71 @@
+<html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
+{% if config["input_type"] == "image" %}
+
+	<body>
+
+	<label for="avatar">Upload image:</label>
+
+	<input type="file"
+	       id="avatar" name="avatar"
+	       accept="image/png, image/jpeg">
+
+	</body>
+
+{% endif %}
+
+
+{% if config["input_type"] == "text" %}
+
+	<body>
+
+	<label>Input text:</label>
+
+	<input type="text"
+	       id="avatar" name="avatar"
+	       accept="text/*">
+
+	</body>
+
+{% endif %}
+
+
+<button onclick="send()">Upload</button>
+
+<script>
+
+function send() {
+
+var formData = new FormData();
+
+if("{{config["input_type"]}}" == "text"){
+	console.log(document.getElementById("avatar").value)
+}
+
+if("{{config["input_type"]}}" == "image"){
+	var imagefile = document.querySelector('#file');
+	formData.append("image", imagefile.files[0]);
+}
+
+
+formData.append("input_type", "{{config["input_type"]}}")
+axios.post('localhost:5000/api/v1/falcon_incoming_request', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+}).then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
+
+
+</script>
+
+</html>
