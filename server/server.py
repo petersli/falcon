@@ -80,6 +80,24 @@ def falcon_incoming_request():
     if data["input_type"] == "text":
         text = data["input_Text"]
 
+@app.route("/tejpal")
+def tejpal():
+
+    config = {
+        "model_url": "",
+        "code_url": "",
+        "input_type": "text",
+        "input_channels": "3",
+        "input_width": "64",
+        "input_height": "64",
+        "output_type": "64",
+        "output_channels": "3",
+        "output_width": "64",
+        "output_height": "64",
+    }
+
+
+    return render_template("tejpal.html", config=config)
 
 if __name__ == '__main__':
     app.run(debug=True)
