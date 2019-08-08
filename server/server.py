@@ -36,8 +36,8 @@ def register():
         db.session.commit()
         return prime.api_key
         
-@app.route("/api/v1/falcon_submit", methods=["POST"])
-def falcon_submit():
+@app.route("/api/v1/falcon_create_html", methods=["POST"])
+def falcon_create_html():
     data = request.json
     prime = User.query.filter_by(api_key=data["api_key"]).first()
     
@@ -63,6 +63,22 @@ def falcon_submit():
         json.dump(config, fp)
 
     return "Request Accepted. Is it correct? Who knows."
+
+@app.route("/api/v1/falcon_incoming_request", methods=["POST"])
+def falcon_incoming_request():
+    data = request.json
+    if data["input_type"] == "image":
+        file = request.files['file']
+        filename = secure_filename(file.filename)
+        file.save(filename))
+    if data["input_type"] == "audio":
+        file = request.files['file']
+        filename = secure_filename(file.filename)
+        file.save(filename))
+    if data["input_type"] == "numbers":
+        numbers = data["data"]
+    if data["input_type"] == "text":
+        text = data["input_Text"]
 
 
 if __name__ == '__main__':
