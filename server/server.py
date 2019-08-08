@@ -7,12 +7,6 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.getcwd() + "/database.db"
 db = SQLAlchemy(app)
 
-s3 = boto3.client(
-   "s3",
-   aws_access_key_id="AKIAZ3GCPRHWA3OXZ4NE",
-   aws_secret_access_key="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"
-)
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -28,10 +22,6 @@ class User(db.Model):
 @app.route('/')
 def index():
     return os.getcwd()
-
-@app.route("/jtguibas/<model_url>", methods=["GET"])
-def render(model_url):
-    return render_template(model_url + ".html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
