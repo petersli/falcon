@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        
+</head>
+
+<body>
+    Hello
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+<script>
+console.log("hello?")
+axios.post('/register', {
+    username: 'jtguibas',
+    password: '123'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+</script>
+
+
+</html>
