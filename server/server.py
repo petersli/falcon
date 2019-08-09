@@ -89,7 +89,7 @@ def tejpal():
     config = {
         "model_url": "",
         "code_url": "",
-        "input_type": "text",
+        "input_type": "image",
         "input_channels": "3",
         "input_width": "64",
         "input_height": "64",
