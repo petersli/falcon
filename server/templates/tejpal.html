@@ -38,24 +38,12 @@
 
 function send() {
 
-var formData = new FormData();
 
-if("{{config["input_type"]}}" == "text"){
-	console.log(document.getElementById("avatar").value)
-}
-
-if("{{config["input_type"]}}" == "image"){
-	var imagefile = document.querySelector('#file');
-	formData.append("image", imagefile.files[0]);
-}
-
-
-formData.append("input_type", "{{config["input_type"]}}")
-axios.post('localhost:5000/api/v1/falcon_incoming_request', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-}).then(function (response) {
+axios.post('http://localhost:5000/api/v1/falcon_incoming_request', {
+    input_type: '{{config["input_type"]}}',
+    input_data: document.getElementById("avatar").value
+  })
+  .then(function (response) {
     console.log(response);
   })
   .catch(function (error) {
@@ -64,6 +52,31 @@ axios.post('localhost:5000/api/v1/falcon_incoming_request', formData, {
 
 }
 
+// var formData = new FormData();
+
+// if("{{config["input_type"]}}" == "text"){
+//  console.log(document.getElementById("avatar").value)
+// }
+
+// if("{{config["input_type"]}}" == "image"){
+//  var imagefile = document.querySelector('#file');
+//  formData.append("image", imagefile.files[0]);
+// }
+
+
+// formData.append("input_type", "{{config["input_type"]}}")
+// axios.post('http://127.0.0.1:5000/api/v1/falcon_incoming_request', formData, {
+//     headers: {
+//       'Content-Type': 'multipart/form-data'
+//     }
+// }).then(function (response) {
+//     console.log(response);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
+
+// }
 
 
 </script>

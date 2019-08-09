@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 import boto3, botocore
 import os, secrets, json
 
 app = Flask(__name__)
+CORS(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.getcwd() + "/database.db"
 db = SQLAlchemy(app)
 
@@ -79,7 +81,7 @@ def falcon_incoming_request():
     #     numbers = data["data"]
     # if data["input_type"] == "text":
     #     text = data["input_Text"]
-    return 'nice one'
+    return "nice one"
 
 @app.route("/tejpal")
 def tejpal():
