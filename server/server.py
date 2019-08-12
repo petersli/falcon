@@ -80,7 +80,7 @@ def falcon_create_html():
 
 @app.route("/api/v1/falcon_incoming_request/<input_type>/<json_string>", methods=["POST"])
 def falcon_incoming_request(input_type, json_string):
-    s3 = boto3.client("s3", aws_access_key_id="AKIAJGMBJ3NQ3G4D6X5A", aws_secret_access_key="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")
+    s3 = boto3.client("s3", aws_access_key_id="xd", aws_secret_access_key="xd")
     config = json.loads(json_string)
     print("got here")
     if input_type == "image":
@@ -118,7 +118,7 @@ def falcon_incoming_request(input_type, json_string):
 
 
 def render(config):
-    s3 = boto3.client("s3", aws_access_key_id="AKIAJGMBJ3NQ3G4D6X5A", aws_secret_access_key="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")
+    s3 = boto3.client("s3", aws_access_key_id="xd", aws_secret_access_key="xd")
     print(config)
     if config["input_type"] == "image":
         s3.download_file("pytorchfalcon", config["input_url"], config["input_url"])
