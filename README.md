@@ -1,5 +1,5 @@
 This is supporting code for our submission to PyTorch's Summer Hackathon at Facebook. 
-Made By: [Peter Li](petersli.com), [John Guibas](github.com/jtguibas), [Tejpal Virdi](github.com/tejpalv)
+Made By: [Peter Li](https://petersli.com/), [John Guibas](https://github.com/jtguibas), [Tejpal Virdi](https://github.com/tejpalv)
 
 # PyTorch Falcon
 
