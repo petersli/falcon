@@ -1,4 +1,4 @@
-This is supporting code for our submission to PyTorch's Summer Hackathon at Facebook in Menlo Park, California. 
+This is supporting code for our submission to PyTorch's Summer Hackathon at Facebook. 
 Made By: [Peter Li](petersli.com), [John Guibas](github.com/jtguibas), [Tejpal Virdi](github.com/tejpalv)
 
 # PyTorch Falcon
