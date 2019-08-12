@@ -1,0 +1,242 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Blinker|Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"
+    integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+    <style>
+    *{
+        font-family: 'Blinker', sans-serif;
+    }
+    </style>
+</head>
+
+<body style="font-family: 'Roboto', sans-serif" id="htmlDownload" style="background-color: #ecf0f1;"">
+    <hr id="starter" style="height: 20px; background-image: linear-gradient(-90deg,#5e21d9,#12a5e2); margin: 0px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+                <h4 class="pt-5 mb-1"><b>{{config["page_title"]}}</b></h4>
+                <p id="typed_wrap" class="text-muted">
+                    {{config["page_subheading"]}}
+                </p>
+                <p style="text-align: justify; font-size: 14px;">
+                    {{config["page_info"]}}
+                </p>
+            </div>
+            <div class="col-sm-2">
+                <h5 class="pt-5">More</h5>
+                <a href="github.com/jtguibas" class="text-muted"><u>Paper</u></a> <br>
+                <a href="github.com/jtguibas" class="text-muted"><u>Github</u></a> <br>
+                <a href="github.com/jtguibas" class="text-muted"><u>Contact Authors</u></a> <br>
+                <br>
+
+            </div>
+        </div>
+        <div>
+            <p class="text-muted" style="text-align: justify; font-size: 10px;">
+            </p>
+
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    
+                    <h6>Input</h6>
+                    {% if config["input_type"] == "image" %}
+
+                    <form id="upload-file" method="post" enctype="multipart/form-data">
+                        <fieldset>
+                            <label for="file">Select a file</label>
+                            <input id="upload-file" name="file" type="file" onchange="loadFile(event);">
+                            <br>
+                            <br>
+                            <img style="width: {{config["input_width"]}}px; height: {{config["input_height"]}}px;" id="output"/>
+                            <script>
+                            
+                            </script>
+                            <br>
+                            <br>
+                        </fieldset>
+                    </form>
+    
+                    {% endif %}
+                    
+                    {% if config["input_type"] == "text" %}
+                        <textarea type="text" id="avatar_text" name="avatar" accept="text/*"></textarea>
+                    {% endif %}
+
+                    {% if config["input_type"] == "noise" %}
+                        Press the button to generate an image!
+                    {% endif %}
+
+                </div>
+                <div class="col-sm-6">
+                    <h6>Output</h6>
+                    {% if config["output_type"] == "image" %}
+                        <img class="mt-5" id="img_lol" style="width: {{config["output_width"]}}px; height: {{config["output_height"]}}px; border: 3px solid black;">
+                    {% endif %}
+
+                    {% if config["output_type"] == "label" %}
+                        <p id="label_result"></p>
+                    {% endif %}
+                </div>
+            </div>
+               
+
+
+
+                <button class="btn btn-primary" onclick="send()">Process</button>
+
+
+                </div>
+
+                <footer class="footer mt-5">
+                        <p class="text-muted">
+                            Built with <u>Falcon for PyTorch</u> 🚀| <a href="{{url_for("static", filename="index.html")}}">Download Static HTML</a>
+                        </p>
+                    </footer>
+                </div>
+            </body>
+
+            <script>
+
+                var loadFile = function(event) {
+                    var output = document.getElementById('output');
+                    output.src = URL.createObjectURL(event.target.files[0]);
+                 };
+
+                function render(input) {
+                    {% if config["output_type"] == "image" and config["output_type"] == "image"%}
+                        console.log(input)
+                        var el = document.getElementById("img_lol")
+                        el.src = input.url
+                    {% endif %}
+                    {% if config["input_type"] == "noise" and config["output_type"] == "image"%}
+                        console.log(input)
+                        var el = document.getElementById("img_lol")
+                        el.src = input
+                    {% endif %}
+
+                    {% if config["output_type"] == "label" %}
+                        var el = document.getElementById("label_result")
+                        el.innerHTML = JSON.stringify(input)
+                    {% endif %}
+
+                   
+
+                    {% if config["input_type"] == "text" %}
+                    document.getElementById("text_xd_lol").innerHTML = input;
+                    {% endif %}
+
+                }
+
+
+
+                function send() {
+
+                    {% if config["input_type"] == "image" and config["output_type"] == "image"%}
+                    var form_data = new FormData($('#upload-file')[0]);
+                    var config_as_string = JSON.stringify({{config|tojson}})
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://localhost:5000/api/v1/falcon_incoming_request/{{config["input_type"]}}/' +
+                            config_as_string,
+                        data: form_data,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (data) {
+                            render(data)
+                        },
+                    });
+                    {% endif %}
+
+
+
+                    {% if config["input_type"] == "audio" %}
+
+                    var form_data = new FormData($('#upload-file')[0]);
+
+                    var config_as_string = JSON.stringify({
+                        {config|tojson}})
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://167.71.146.40:5000/api/v1/falcon_incoming_request/{{config["input_type"]}}/' +
+                            config_as_string,
+                        data: form_data,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (data) {
+                            console.log('Success!');
+                        },
+                    });
+
+                    {% endif %}
+
+
+
+                    {% if config["input_type"] == "text" %}
+                    axios.post('http://167.71.146.40:5000/api/v1/falcon_incoming_request', {
+                            input_type: 'text',
+                            input_data: document.getElementById("avatar_text").value
+
+                        }).then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                    {% endif %}
+
+                    {% if config["input_type"] == "noise" and config["output_type"] == "image"%}
+                    var config_as_string = JSON.stringify({{config|tojson}})
+                    axios.post('http://localhost:5000/api/v1/falcon_incoming_request/noise/' + config_as_string, {
+                        input: "hello"
+                        }).then(function (response) {
+                            console.log(response);
+                            render(response.data.url)
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                    {% endif %}
+
+                    {% if config["input_type"] == "image" and config["output_type"] == "label"%}
+                    var form_data = new FormData($('#upload-file')[0]);
+                    var config_as_string = JSON.stringify({{config|tojson}})
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://localhost:5000/api/v1/falcon_incoming_request/{{config["input_type"]}}/' +
+                            config_as_string,
+                        data: form_data,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (data) {
+                            render(data)
+                        },
+                    });
+                    {% endif %}
+
+                    
+
+                }
+
+            </script>
+
+
+
+
+
+</html>

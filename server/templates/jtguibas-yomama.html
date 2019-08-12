@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-{% if config["input_type"] == "image" %}
+
 
 	
 
@@ -13,18 +13,10 @@
 	       accept="image/png, image/jpeg">
 
 
-{% endif %}
 
 
-{% if config["input_type"] == "text" %}
 
-	<label>Input text:</label>
 
-	<input type="text"
-	       id="avatar_text" name="avatar"
-	       accept="text/*">
-
-{% endif %}
 
 
 <button onclick="send()">Upload</button>
@@ -34,16 +26,16 @@
 
 <script>
 
-var config = {{config|tojson}};
+var config = {"api_key": "aQnZfx", "code_url": "yomama_UZRGLG.py", "input_arr_length": "", "input_channels": "3", "input_height": "256", "input_type": "image", "input_width": "256", "model_url": "yomama_UZRGLG.pt", "name": "yomama", "output_arr_length": "", "output_channels": "1", "output_height": "256", "output_num_labels": "", "output_type": "image", "output_width": "256"};
 
 function render() {
 
 }
 function send() {
 
-{% if config["input_type"] == "image" %}
+
 var formData = new FormData()
-formData.append("input_type", "{{config["input_type"]}}")
+formData.append("input_type", "image")
 formData.append("files", document.getElementById("avatar").files[0])
 axios.post('http://localhost:5000/api/v1/falcon_incoming_request', formData).then(function (response) {
     console.log(response);
@@ -55,22 +47,10 @@ axios.post('http://localhost:5000/api/v1/falcon_incoming_request', formData).the
 
 
 
-{% endif %}
 
 
-{% if config["input_type"] == "text" %}
-axios.post('http://127.0.0.1:5000/api/v1/falcon_incoming_request', {
-    input_type: 'text',
-    input_data: document.getElementById("avatar_text").value
 
-  }).then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
 
-  {% endif %}
 
 }
 
