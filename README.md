@@ -1,13 +1,7 @@
 This is supporting code for our submission to PyTorch's Summer Hackathon at Facebook in Menlo Park, California. 
-Made By:
-- [Peter Li](petersli.com)
-- [John Guibas](github.com/jtguibas)
-- [Tejpal Virdi](github.com/tejpalv)
+Made By: [Peter Li](petersli.com), [John Guibas](github.com/jtguibas), [Tejpal Virdi](github.com/tejpalv)
 
 # PyTorch Falcon
-
-
-
 
 ![alt text](https://i.imgur.com/fRu1DAZ.png "screenshot")
 
