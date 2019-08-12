@@ -1,6 +1,6 @@
 {
         "api_key": "aQnZfx",
-        "name": "character_development",
+        "name": "unet_demo",
         "model_url": "unet.pt",
         "code_url": "falcon_run_unet.py",
         "input": "image.3x256x256",

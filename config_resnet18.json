@@ -1,6 +1,6 @@
 {
         "api_key": "aQnZfx",
-        "name": "character_development",
+        "name": "resnet18_demo",
         "model_url": "resnet18.pt",
         "code_url": "falcon_run_resnet18.py",
         "input": "image.3x224x224",

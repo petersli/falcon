@@ -3,7 +3,9 @@ import sys, requests, json, boto3, random, string, os, progressbar
 def upload_progress(chunk):
     up_progress.update(up_progress.currval + chunk)
 
-# > falcon -d config.json
+# deploy command:
+# $ falcon -d config.json
+
 
 action = sys.argv[1]
 config = sys.argv[2]

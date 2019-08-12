@@ -1,6 +1,8 @@
 from PIL import Image
 import torch, json
 from torchvision import transforms, utils
+import numpy as np
+
 
 labels = {0: 'tench, Tinca tinca',
 1: 'goldfish, Carassius auratus',
@@ -1014,7 +1016,6 @@ print(input.shape)
 
 model = torch.load('model.pt')
 model.eval()
-import numpy as np
 
 def run(model, input):
     result = model(input)

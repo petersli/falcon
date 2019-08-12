@@ -1,6 +1,6 @@
 {
         "api_key": "aQnZfx",
-        "name": "character_development",
+        "name": "gan_demo",
         "model_url": "generative.pt",
         "code_url": "falcon_run_gan.py",
         "input": "noise",

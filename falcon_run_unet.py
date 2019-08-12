@@ -1,12 +1,13 @@
 import torch, torchvision
+import numpy as np
+from PIL import Image
+from torchvision import transforms
+
+
 model = torch.hub.load('mateuszbuda/brain-segmentation-pytorch', 'unet',
     in_channels=3, out_channels=1, init_features=32, pretrained=False)
 
 model = torch.load("model.pt")
-
-import numpy as np
-from PIL import Image
-from torchvision import transforms
 
 input_image = Image.open('input.png')
 m, s = np.mean(input_image, axis=(0, 1)), np.std(input_image, axis=(0, 1))
