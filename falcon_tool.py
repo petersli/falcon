@@ -13,7 +13,7 @@ with open(config, 'r') as f:
 
 
 
-s3 = boto3.client("s3", aws_access_key_id="AKIAJGMBJ3NQ3G4D6X5A", aws_secret_access_key="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")
+s3 = boto3.client("s3", aws_access_key_id="xd", aws_secret_access_key="xd")
 
 unique_url = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
 
