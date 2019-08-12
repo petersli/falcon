@@ -1,6 +1,5 @@
 This is supporting code for our submission to PyTorch's Summer Hackathon at Facebook in Menlo Park, California. 
-
-Team Members:
+Made By:
 - [Peter Li](petersli.com)
 - [John Guibas](github.com/jtguibas)
 - [Tejpal Virdi](github.com/tejpalv)
