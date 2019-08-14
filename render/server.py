@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    s3 = boto3.client("s3", aws_access_key_id="AKIAJGMBJ3NQ3G4D6X5A", aws_secret_access_key="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")
+    s3 = boto3.client("s3", aws_access_key_id="zz", aws_secret_access_key="zz")
 
     unet_config = {
         "input_url": "input_unet.png",
